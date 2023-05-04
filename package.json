@@ -19,11 +19,17 @@
     "@prismicio/next": "^1.0.3",
     "@prismicio/react": "^2.5.2",
     "@prismicio/slice-simulator-react": "^0.2.3",
+    "@react-spring/web": "^9.7.2",
     "clsx": "^1.2.1",
     "flag-icons": "^6.6.6",
+    "lightgallery": "^2.7.1",
     "next": "^13.0.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-scroll-parallax": "^3.4.2",
+    "react-spring": "^9.7.1",
+    "styled-components": "^5.3.10",
+    "swiper": "^9.2.4"
   },
   "devDependencies": {
     "@prismicio/types": "^0.2.7",

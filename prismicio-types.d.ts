@@ -94,7 +94,10 @@ type PageDocumentDataSlicesSlice =
   | HeroSlice
   | ImageSlice
   | TextWithFeaturesSlice
-  | TextWithImageSlice;
+  | TextWithImageSlice
+  | PillarsSlice
+  | GallerySlice
+  | VideoSlice;
 /**
  * Page document from Prismic
  *
@@ -173,6 +176,191 @@ export type AllDocumentTypes =
   | PageDocument
   | SettingsDocument;
 /**
+ * Primary content in Gallery → Primary
+ *
+ */
+interface GallerySliceDefaultPrimary {
+  /**
+   * Text field in *Gallery → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Item in Gallery → Items
+ *
+ */
+export interface GallerySliceDefaultItem {
+  /**
+   * Image field in *Gallery → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismicT.ImageField<"Small">;
+  /**
+   * Text field in *Gallery → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GallerySliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Simplify<GallerySliceDefaultPrimary>,
+  Simplify<GallerySliceDefaultItem>
+>;
+/**
+ * Primary content in Gallery → Primary
+ *
+ */
+interface GallerySliceCarouselPrimary {
+  /**
+   * Text field in *Gallery → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Item in Gallery → Items
+ *
+ */
+export interface GallerySliceCarouselItem {
+  /**
+   * Image field in *Gallery → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismicT.ImageField<never>;
+  /**
+   * Text field in *Gallery → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Carousel variation for Gallery Slice
+ *
+ * - **API ID**: `carousel`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GallerySliceCarousel = prismicT.SharedSliceVariation<
+  "carousel",
+  Simplify<GallerySliceCarouselPrimary>,
+  Simplify<GallerySliceCarouselItem>
+>;
+/**
+ * Primary content in Gallery → Primary
+ *
+ */
+interface GallerySliceInstagramPrimary {
+  /**
+   * Text field in *Gallery → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Item in Gallery → Items
+ *
+ */
+export interface GallerySliceInstagramItem {
+  /**
+   * Image field in *Gallery → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismicT.ImageField<never>;
+  /**
+   * Text field in *Gallery → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Instagram variation for Gallery Slice
+ *
+ * - **API ID**: `instagram`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GallerySliceInstagram = prismicT.SharedSliceVariation<
+  "instagram",
+  Simplify<GallerySliceInstagramPrimary>,
+  Simplify<GallerySliceInstagramItem>
+>;
+/**
+ * Slice variation for *Gallery*
+ *
+ */
+type GallerySliceVariation =
+  | GallerySliceDefault
+  | GallerySliceCarousel
+  | GallerySliceInstagram;
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: `Gallery`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GallerySlice = prismicT.SharedSlice<
+  "gallery",
+  GallerySliceVariation
+>;
+/**
  * Primary content in Hero → Primary
  *
  */
@@ -181,7 +369,7 @@ interface HeroSliceDefaultPrimary {
    * Text field in *Hero → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Introductory Text for the page
+   * - **Placeholder**: Introductory text for the page
    * - **API ID Path**: hero.primary.text
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
@@ -379,6 +567,88 @@ type ImageSliceVariation = ImageSliceWhite | ImageSliceLightSlate;
  */
 export type ImageSlice = prismicT.SharedSlice<"image", ImageSliceVariation>;
 /**
+ * Primary content in Pillars → Primary
+ *
+ */
+interface PillarsSliceDefaultPrimary {
+  /**
+   * Text field in *Pillars → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pillars.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Item in Pillars → Items
+ *
+ */
+export interface PillarsSliceDefaultItem {
+  /**
+   * Link field in *Pillars → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pillars.items[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismicT.LinkField;
+  /**
+   * Image field in *Pillars → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pillars.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismicT.ImageField<never>;
+  /**
+   * Text field in *Pillars → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pillars.items[].text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Default variation for Pillars Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PillarsSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Simplify<PillarsSliceDefaultPrimary>,
+  Simplify<PillarsSliceDefaultItem>
+>;
+/**
+ * Slice variation for *Pillars*
+ *
+ */
+type PillarsSliceVariation = PillarsSliceDefault;
+/**
+ * Pillars Shared Slice
+ *
+ * - **API ID**: `pillars`
+ * - **Description**: `Pillars`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PillarsSlice = prismicT.SharedSlice<
+  "pillars",
+  PillarsSliceVariation
+>;
+/**
  * Primary content in TextWithFeatures → Primary
  *
  */
@@ -506,6 +776,88 @@ export type TextWithImageSlice = prismicT.SharedSlice<
   "text_with_image",
   TextWithImageSliceVariation
 >;
+/**
+ * Primary content in Video → Primary
+ *
+ */
+interface VideoSliceDefaultPrimary {
+  /**
+   * Video field in *Video → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.primary.video
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  video: prismicT.LinkToMediaField;
+}
+/**
+ * Default variation for Video Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type VideoSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Simplify<VideoSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Primary content in Video → Primary
+ *
+ */
+interface VideoSliceVideoWithTextPrimary {
+  /**
+   * Video field in *Video → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.primary.video
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  video: prismicT.LinkToMediaField;
+  /**
+   * Text field in *Video → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Video - With text variation for Video Slice
+ *
+ * - **API ID**: `videoWithText`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type VideoSliceVideoWithText = prismicT.SharedSliceVariation<
+  "videoWithText",
+  Simplify<VideoSliceVideoWithTextPrimary>,
+  never
+>;
+/**
+ * Slice variation for *Video*
+ *
+ */
+type VideoSliceVariation = VideoSliceDefault | VideoSliceVideoWithText;
+/**
+ * Video Shared Slice
+ *
+ * - **API ID**: `video`
+ * - **Description**: `Video`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type VideoSlice = prismicT.SharedSlice<"video", VideoSliceVariation>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -524,6 +876,17 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocument,
       AllDocumentTypes,
+      GallerySliceDefaultPrimary,
+      GallerySliceDefaultItem,
+      GallerySliceDefault,
+      GallerySliceCarouselPrimary,
+      GallerySliceCarouselItem,
+      GallerySliceCarousel,
+      GallerySliceInstagramPrimary,
+      GallerySliceInstagramItem,
+      GallerySliceInstagram,
+      GallerySliceVariation,
+      GallerySlice,
       HeroSliceDefaultPrimary,
       HeroSliceDefault,
       HeroSliceWithButtonPrimary,
@@ -536,6 +899,11 @@ declare module "@prismicio/client" {
       ImageSliceLightSlate,
       ImageSliceVariation,
       ImageSlice,
+      PillarsSliceDefaultPrimary,
+      PillarsSliceDefaultItem,
+      PillarsSliceDefault,
+      PillarsSliceVariation,
+      PillarsSlice,
       TextWithFeaturesSliceDefaultPrimary,
       TextWithFeaturesSliceDefaultItem,
       TextWithFeaturesSliceDefault,
@@ -545,6 +913,12 @@ declare module "@prismicio/client" {
       TextWithImageSliceDefault,
       TextWithImageSliceVariation,
       TextWithImageSlice,
+      VideoSliceDefaultPrimary,
+      VideoSliceDefault,
+      VideoSliceVideoWithTextPrimary,
+      VideoSliceVideoWithText,
+      VideoSliceVariation,
+      VideoSlice,
     };
   }
 }

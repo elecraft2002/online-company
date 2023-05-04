@@ -7,7 +7,7 @@ import { Heading } from "../../components/Heading";
 
 const TextWithFeatures = ({ slice }) => {
   return (
-    <Bounded collapsible={false} as="section" className="bg-slate-100">
+    <Bounded collapsible={false} as="section" className="bg-lightSlate">
       <div className="grid grid-cols-1 items-end gap-10 md:grid-cols-2 md:gap-10 lg:gap-28">
         <div className="grid grid-cols-1 gap-8">
           {prismicH.isFilled.image(slice.primary.icon) && (

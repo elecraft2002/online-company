@@ -9,3 +9,8 @@
   + [data-collapsible="true"].bg-slate-100 {
   @apply pt-0 md:pt-0;
 }
+@layer utilities {
+  .clip-fixed {
+    clip: rect(0, auto, auto, 0);
+  }
+}

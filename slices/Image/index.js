@@ -5,18 +5,19 @@ import clsx from "clsx";
 import { Bounded } from "../../components/Bounded";
 
 const Image = ({ slice }) => {
+  console.log(slice.variation);
   return (
     <Bounded
       as="section"
       className={clsx(
-        slice.variation === "lightSlate" && "bg-slate-100",
-        slice.variation === "white" && "bg-white"
+        slice.variation === "lightSlate" && "bg-" + slice.variation,
+        slice.variation === "white" && "bg-lightSlate"
       )}
     >
       <div className="relative">
         {slice.primary.withAccent && (
-          <div className="absolute -top-4 -left-4 w-1/3">
-            <div className="aspect-w-1 aspect-h-1 bg-slate-200/50" />
+          <div className="absolute -left-4 -top-4 w-1/3">
+            <div className="bg-slate-200/50 aspect-h-1 aspect-w-1" />
           </div>
         )}
         {prismicH.isFilled.image(slice.primary.image) && (
