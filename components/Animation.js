@@ -10,8 +10,6 @@ transform:translateX(100%);
 100% {transform:translateX(0px); };
 `; */
 const StyledLetter = styled.span`
-  /* animation: ${SlideIn}; */
-  /* animation-duration: 1s; */
   transition: 0.8s;
   position: relative;
   display: block;
