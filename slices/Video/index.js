@@ -23,8 +23,9 @@ const Video = ({ slice }) => {
           <video
             src={slice.primary.video.url}
             autoplay="autoplay"
-            muted=""
-            loop=""
+            muted
+            controls
+            loop
             type="video/mp4"
             className={slice.variation === "videoWithText" && "brightness-50"}
           ></video>
