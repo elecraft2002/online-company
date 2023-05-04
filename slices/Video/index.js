@@ -26,6 +26,7 @@ const Video = ({ slice }) => {
             muted=""
             loop=""
             type="video/mp4"
+            className={slice.variation === "videoWithText" && "brightness-50"}
           ></video>
         </ParallaxBannerLayer>
       </ParallaxBanner>

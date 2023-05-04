@@ -5,7 +5,14 @@ import { PrismicPreview } from "@prismicio/next";
 import { repositoryName, linkResolver } from "../prismicio";
 
 import "../styles/globals.css";
-
+import React from "react";
+// import AnimatedCursor from "react-animated-cursor"
+import dynamic from "next/dynamic";
+/* 
+const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
+  ssr: false,
+});
+ */
 const richTextComponents = {
   paragraph: ({ children }) => <p className="mb-7 last:mb-0">{children}</p>,
   oList: ({ children }) => (
@@ -46,6 +53,7 @@ export default function App({ Component, pageProps }) {
       richTextComponents={richTextComponents}
     >
       <PrismicPreview repositoryName={repositoryName}>
+        {/* <AnimatedCursor color={"#000"} /> */}
         <Component {...pageProps} />
       </PrismicPreview>
     </PrismicProvider>
