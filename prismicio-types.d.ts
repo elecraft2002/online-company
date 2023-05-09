@@ -760,10 +760,51 @@ export type TextWithImageSliceDefault = prismicT.SharedSliceVariation<
   never
 >;
 /**
+ * Primary content in TextWithImage → Primary
+ *
+ */
+interface TextWithImageSliceTextWithVideoPrimary {
+  /**
+   * Text field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Text displayed next to image
+   * - **API ID Path**: text_with_image.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+  /**
+   * Video field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.video
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  video: prismicT.LinkToMediaField;
+}
+/**
+ * Text - with video variation for TextWithImage Slice
+ *
+ * - **API ID**: `textWithVideo`
+ * - **Description**: `TextWithImage`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextWithImageSliceTextWithVideo = prismicT.SharedSliceVariation<
+  "textWithVideo",
+  Simplify<TextWithImageSliceTextWithVideoPrimary>,
+  never
+>;
+/**
  * Slice variation for *TextWithImage*
  *
  */
-type TextWithImageSliceVariation = TextWithImageSliceDefault;
+type TextWithImageSliceVariation =
+  | TextWithImageSliceDefault
+  | TextWithImageSliceTextWithVideo;
 /**
  * TextWithImage Shared Slice
  *
@@ -911,6 +952,8 @@ declare module "@prismicio/client" {
       TextWithFeaturesSlice,
       TextWithImageSliceDefaultPrimary,
       TextWithImageSliceDefault,
+      TextWithImageSliceTextWithVideoPrimary,
+      TextWithImageSliceTextWithVideo,
       TextWithImageSliceVariation,
       TextWithImageSlice,
       VideoSliceDefaultPrimary,

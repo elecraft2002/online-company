@@ -10,15 +10,26 @@ const TextWithImage = ({ slice }) => {
     <Bounded as="section" className="bg-transparent">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-16 lg:gap-28">
         <div className="relative max-w-xs md:col-span-5 md:max-w-none">
-          <div className="absolute -top-6 -left-6 w-2/3">
-            <div className="aspect-w-1 aspect-h-1 bg-lightSlate" />
+          <div className="absolute -left-6 -top-6 w-2/3">
+            <div className="aspect-h-1 aspect-w-1 bg-lightSlate" />
           </div>
-          {prismicH.isFilled.image(slice.primary.image) && (
-            <PrismicNextImage
-              field={slice.primary.image}
-              sizes="100vw"
-              className="relative w-full"
-            />
+          {slice.variation === "default" &&
+            prismicH.isFilled.image(slice.primary.image) && (
+              <PrismicNextImage
+                field={slice.primary.image}
+                sizes="100vw"
+                className="relative w-full"
+              />
+            )}
+          {slice.variation === "textWithVideo" && (
+            <video
+              src={slice.primary.video.url}
+              autoplay="autoplay"
+              muted
+              loop
+              type={slice.video?.url}
+              className="relative w-full rounded-md"
+            ></video>
           )}
         </div>
         <div className="max-w-prose self-end leading-relaxed md:col-span-7">

@@ -20,8 +20,8 @@ const Gallery = ({ slice }) => {
       <span className="my-7 block text-center">
         <PrismicRichText field={slice.primary.text} />
       </span>
-      <Carousel slice={slice} />
-      <GalleryComponent slice={slice} />
+      {slice.variation === "carousel" && <Carousel slice={slice} />}
+      {slice.variation === "default" && <GalleryComponent slice={slice} />}
     </section>
   );
 };

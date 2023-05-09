@@ -13,32 +13,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { PrismicRichText } from "@prismicio/react";
+import useWindowSize from "../../functions/useWindowSize";
 const Carousel = ({ slice }) => {
-  const [width, setWidth] = useState(0);
-  const handleResize = () => {
-    console.log("width");
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const {width, height}  = useWindowSize();
   const maxSlidesPerView =
     slice.items.length - 2 < 3 ? slice.items.length - 2 : 3;
   return (
     <ul className="m-0 p-0">
       <Swiper
-        modules={[
-          Navigation,
-          Pagination,
-          Scrollbar,
-          A11y,
-          Keyboard,
-        ]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Keyboard]}
         // controller={{ control: controlledSwiper }}
         className="mx-auto w-full max-w-6xl"
         // spaceBetween={50}

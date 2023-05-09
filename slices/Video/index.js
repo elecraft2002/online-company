@@ -1,3 +1,4 @@
+import { PrismicRichText } from "@prismicio/react";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 /**
@@ -18,7 +19,7 @@ const Video = ({ slice }) => {
         xddsadasdsa
         </div>
       </div> */}
-      <ParallaxBanner className="h-full">
+      <ParallaxBanner className="relative h-full">
         <ParallaxBannerLayer translateY={["-20vh", "20vh"]}>
           <video
             src={slice.primary.video.url}
@@ -28,6 +29,13 @@ const Video = ({ slice }) => {
             type="video/mp4"
             className={slice.variation === "videoWithText" && "brightness-50"}
           ></video>
+          <div className="absolute top-0  flex h-full w-full flex-col content-center justify-center text-white">
+            {slice.variation === "videoWithText" && (
+              <span className="mx-auto max-w-6xl">
+                <PrismicRichText field={slice.primary.text} />
+              </span>
+            )}
+          </div>
         </ParallaxBannerLayer>
       </ParallaxBanner>
     </section>
