@@ -11,100 +11,90 @@ import { Suspense, useRef, useState } from "react";
 import CameraModel from "../components/models/CameraModel";
 import { OrbitControls, Plane, Stage } from "@react-three/drei";
 import ItemsModel from "../components/models/ItemsModel";
+import Pen from "../components/models/Pen";
+import Flower from "../components/models/Flower";
 import useMousePosition from "../functions/useMousePosition";
 import { animated } from "@react-spring/three";
 import { useSpring } from "react-spring";
+import Scene from "../components/Scene"
 
-function Box(props) {
-  // This reference will give us direct access to the mesh
-  const mesh = useRef();
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (mesh.current.rotation.x += delta));
-  // Return view, these are regular three.js elements expressed in JSX
-  return (
-    <mesh
-      {...props}
-      ref={mesh}
-      scale={active ? 1.5 : 1}
-      onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
-    >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
-    </mesh>
-  );
-}
-const Landing = () => {
-  const mousePosition = useMousePosition();
-  const rotation = [mousePosition[1] / 5, mousePosition[0] / 5, 0];
-  const { rotation: easedRotation } = useSpring({ rotation });
-  return (
-    <div className="relative h-[100vh]">
-      <h1 className="absolute top-1/2 text-[10vw]">PES DESIGN</h1>
-      <Canvas shadows dpr={[1, 2]} camera={{ fov: 50 }}>
-        <Stage
-          preset="rembrandt"
-          intensity={1}
-          environment="city"
-          adjustCamera={false}
-        >
-          <Suspense fallback={null}>
-            <animated.group rotation={easedRotation}>
-              <ItemsModel
-                castShadow
-                rotation={[0, -Math.PI / 2, 0]}
-                position={[0, -1, 0]}
-              />
-              <CameraModel
-                position={[0, -0.5, 0]}
-                rotation={[0, -Math.PI / 2, 0]}
-              />
-              <ambientLight />
-              <pointLight position={[10, 10, 10]} />
-              <mesh
-                receiveShadow
-                rotation={[-Math.PI / 2, 0, 0]}
-                position={[0, -3, 0]}
-              >
-                <planeBufferGeometry attach="geometry"  args={[100, 100]} />
-                <shadowMaterial attach="material" opacity={0.3} color="blue" />
-              </mesh>
-            </animated.group>
-          </Suspense>
-        </Stage>
-      </Canvas>
-    </div>
-  );
-};
+// function Box(props) {
+//   // This reference will give us direct access to the mesh
+//   const mesh = useRef();
+//   // Set up state for the hovered and active state
+//   const [hovered, setHover] = useState(false);
+//   const [active, setActive] = useState(false);
+//   // Subscribe this component to the render-loop, rotate the mesh every frame
+//   useFrame((state, delta) => (mesh.current.rotation.x += delta));
+//   // Return view, these are regular three.js elements expressed in JSX
+//   return (
+//     <mesh
+//       {...props}
+//       ref={mesh}
+//       scale={active ? 1.5 : 1}
+//       onClick={(event) => setActive(!active)}
+//       onPointerOver={(event) => setHover(true)}
+//       onPointerOut={(event) => setHover(false)}
+//     >
+//       <boxGeometry args={[1, 1, 1]} />
+//       <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+//     </mesh>
+//   );
+// }
+// const Landing = () => {
+//   const mousePosition = useMousePosition();
+//   const { width, height } = useWindowSize();
+//   const rotation = [
+//     mousePosition[1] / width / 20,
+//     mousePosition[0] / width / 20,
+//     0,
+//   ];
+//   const { rotation: easedRotation } = useSpring({ rotation });
+//   return (
+//     <div className="relative h-[100vh]">
+//       <h1 className="absolute top-1/2 text-[10vw]">PES DESIGN</h1>
+//       <Canvas shadows dpr={[1, 2]} camera={{ fov: 50 }}>
+//         <Stage
+//           preset="rembrandt"
+//           intensity={1}
+//           environment="city"
+//           adjustCamera={false}
+//         >
+//           <Suspense fallback={null}>
+//             <Pen
+//               scale={1}
+//               rotation={easedRotation}
+//               position={[width / 600, 0, 0]}
+//             />
+//             <Flower
+//               scale={1.5}
+//               rotation={easedRotation}
+//               position={[-width / 600, 0, 0]}
+//             />
+//             <CameraModel
+//               scale={1.5} /* rotation={easedRotation}  */
+//               position={[width / 600, -2, -1]}
+//               rotation={[0, -Math.PI / 2, 0]}
+//             />
+//             <ambientLight />
+//             <pointLight position={[10, 10, 10]} />
+//             <mesh
+//               receiveShadow
+//               rotation={[-Math.PI / 2, 0, 0]}
+//               position={[0, -3, 0]}
+//             >
+//               <planeBufferGeometry attach="geometry" args={[100, 100]} />
+//               <shadowMaterial attach="material" opacity={0.3} color="blue" />
+//             </mesh>
+//           </Suspense>
+//         </Stage>
+//       </Canvas>
+//     </div>
+//   );
+// };
 
 const Index = ({ page, navigation, settings }) => {
   const { width, height } = useWindowSize();
-  /*   const items = [
-    {
-      text: "Weby",
-      video: {
-        url: "https://www.leaf-animation.cz/frontend/videos/grafika@hp.mp4",
-      },
-    },
-    {
-      text: "Animace",
-      video: {
-        url: "https://www.leaf-animation.cz/frontend/videos/grafika@hp.mp4",
-      },
-    },
-    {
-      text: "Modely",
-      video: {
-        url: "https://www.leaf-animation.cz/frontend/videos/grafika@hp.mp4",
-      },
-      link: "",
-    },
-  ];
-  const maxSlidesPerView = items.length; */
   return (
     <Layout
       alternateLanguages={page.alternate_languages}
@@ -114,8 +104,8 @@ const Index = ({ page, navigation, settings }) => {
       <Head>
         <title>{prismicH.asText(page.data.title)}</title>
       </Head>
-      <div className="w-full">
-        <Landing />
+      <div className="w-full h-[100vh]">
+        <Scene />
       </div>
       {/*< ul className="m-0 p-0">
         <Swiper

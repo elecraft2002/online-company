@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { animated } from "@react-spring/three";
 
 export default function CameraModel(props) {
   const { nodes, materials } = useGLTF("/Camera.gltf");
   return (
-    <group {...props} dispose={null}>
+    <animated.group {...props} dispose={null}>
       <group position={[0, -0.56, 0.74]} scale={0.28}>
         <mesh
           castShadow
@@ -201,7 +202,7 @@ export default function CameraModel(props) {
         rotation={[Math.PI / 2, 0, -Math.PI / 2]}
         scale={[0.34, 0.33, 0.33]}
       />
-    </group>
+    </animated.group>
   );
 }
 
