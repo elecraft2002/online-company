@@ -1,18 +1,13 @@
 import * as THREE from "three";
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import { easing } from "maath";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
-  useGLTF,
-  Center,
-  Caustics,
   Environment,
   Lightformer,
   RandomizedLight,
   PerformanceMonitor,
   AccumulativeShadows,
-  MeshTransmissionMaterial,
-  ScrollControls,
 } from "@react-three/drei";
 import Flower from "./models/Flower";
 import Pen from "./models/Pen";
@@ -22,18 +17,6 @@ import Laptop from "./models/Laptop";
 import useScroll from "../functions/useScroll";
 import { animated } from "@react-spring/three";
 import { useSpring } from "react-spring";
-
-const innerMaterial = new THREE.MeshStandardMaterial({
-  transparent: true,
-  opacity: 1,
-  color: "black",
-  roughness: 0,
-  side: THREE.FrontSide,
-  blending: THREE.AdditiveBlending,
-  polygonOffset: true,
-  polygonOffsetFactor: 1,
-  envMapIntensity: 2,
-});
 
 export default function App() {
   const ref = useRef(null);
@@ -46,6 +29,7 @@ export default function App() {
     laptop: [0, scrollY / 2, 0],
     camera: [0, scrollY, 0],
   });
+  if (scrollY > 1.5) return null;
   return (
     <Canvas
       // shadows
@@ -53,6 +37,7 @@ export default function App() {
       dpr={[1, perfSucks ? 1.5 : 2]}
       // eventSource={document.getElementById('root')}
       eventPrefix="client"
+      className="select-none"
       camera={{ position: [20, 0.9, 20], fov: 26 }}
     >
       {/** PerfMon will detect performance issues */}
@@ -60,46 +45,48 @@ export default function App() {
       <color attach="background" args={["#f0f0f0"]} />
       <group position={[0, 0, 0]} rotation={[0, -0.75, 0]}>
         {/* <Scene /> */}
-        <animated.group position={pen}>
-          <Pen scale={1} position={[width / 600, 0, 0]} />
-        </animated.group>
-        <animated.group position={flower}>
-          <Flower scale={1.5} position={[-width / 600, 0, 1]} />
-        </animated.group>
-        <animated.group position={camera}>
-          <CameraModel
-            position={[width / 600, 0, -2]}
-            rotation={[0, -Math.PI / 2, 0]}
-            scale={0.8}
-          />
-        </animated.group>
-        <animated.group position={laptop}>
-          <Laptop
-            scale={
-              width / 800 > 2 ? width / 600 : 2
-            } /* rotation={easedRotation}  */
-            position={[0, 0, 0]}
-            rotation={[0, -Math.PI / 2, 0]}
-          />
-        </animated.group>
-        <AccumulativeShadows
-          frames={100}
-          alphaTest={0.85}
-          opacity={0.8}
-          color="red"
-          scale={20}
-          position={[0, -0.005, 0]}
-        >
-          <RandomizedLight
-            amount={8}
-            radius={6}
-            ambient={0.5}
-            intensity={1}
-            position={[-1.5, 2.5, -2.5]}
-            bias={0.001}
-          />
-        </AccumulativeShadows>
-      </group>
+       <Suspense fallback={null}>
+          <animated.group position={pen}>
+            <Pen scale={1} position={[width / 600, 0, 0]} />
+          </animated.group>
+          <animated.group position={flower}>
+            <Flower scale={1.5} position={[-width / 600, 0, 1]} />
+          </animated.group>
+          <animated.group position={camera}>
+            <CameraModel
+              position={[width / 600, 0, -2]}
+              rotation={[0, -Math.PI / 2, 0]}
+              scale={0.8}
+            />
+          </animated.group>
+          <animated.group position={laptop}>
+            <Laptop
+              scale={
+                width / 800 > 2 ? width / 600 : 2
+              } /* rotation={easedRotation}  */
+              position={[0, -0.2, 0]}
+              rotation={[0, -Math.PI / 2, 0]}
+            />
+          </animated.group>
+          <AccumulativeShadows
+            frames={100}
+            alphaTest={0.85}
+            opacity={0.8}
+            color="red"
+            scale={20}
+            position={[0, -0.005, 0]}
+          >
+            <RandomizedLight
+              amount={8}
+              radius={6}
+              ambient={0.5}
+              intensity={1}
+              position={[-1.5, 2.5, -2.5]}
+              bias={0.001}
+            />
+          </AccumulativeShadows>
+       </Suspense>
+        </group>
       <Env perfSucks={perfSucks} />
     </Canvas>
   );
