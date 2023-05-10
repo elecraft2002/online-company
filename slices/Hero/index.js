@@ -4,10 +4,11 @@ import * as prismicH from "@prismicio/helpers";
 
 import { Bounded } from "../../components/Bounded";
 import { Heading } from "../../components/Heading";
+import { getColorVariation } from "../../pages/_app";
 
 const Hero = ({ slice }) => {
   return (
-    <Bounded as="section" collapsible={false} className="bg-transparent pb-0 md:pb-0">
+    <Bounded as="section" collapsible={false} className={"bg-transparent pb-0 md:pb-0" + getColorVariation(slice)}>
       <div className="grid grid-cols-1 justify-items-center gap-10">
         <div className="max-w-2xl text-center leading-relaxed">
           <PrismicRichText

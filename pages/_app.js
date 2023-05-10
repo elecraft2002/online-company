@@ -13,6 +13,15 @@ const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
 });
  */
+
+export const getColorVariation = (slice) => {
+  console.log(slice.primary.color);
+  if (slice.primary.color === "none") return " bg-transparent";
+  if (slice.primary.color === "gray") return " bg-lightSlate";
+  if (slice.primary.color === "dark") return " bg-gray-800 text-white";
+  return "bg-transparent ";
+};
+
 const richTextComponents = {
   paragraph: ({ children }) => <p className="mb-7 last:mb-0">{children}</p>,
   oList: ({ children }) => (

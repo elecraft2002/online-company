@@ -36,6 +36,11 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"color": {
+				"__TYPE__": "FieldContent",
+				"value": "gray",
+				"type": "Select"
 			}
 		},
 		"items": [
@@ -70,6 +75,11 @@
 					"size": "0",
 					"__TYPE__": "FileLink"
 				}
+			},
+			"color": {
+				"__TYPE__": "FieldContent",
+				"value": "dark",
+				"type": "Select"
 			}
 		},
 		"items": [

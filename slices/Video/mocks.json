@@ -13,6 +13,11 @@
 					"size": "0",
 					"__TYPE__": "FileLink"
 				}
+			},
+			"color": {
+				"__TYPE__": "FieldContent",
+				"value": "none",
+				"type": "Select"
 			}
 		},
 		"items": []

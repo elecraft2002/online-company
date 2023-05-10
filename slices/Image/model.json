@@ -13,11 +13,7 @@
       "primary": {
         "image": {
           "type": "Image",
-          "config": {
-            "constraint": {},
-            "thumbnails": [],
-            "label": "Image"
-          }
+          "config": { "constraint": {}, "thumbnails": [], "label": "Image" }
         },
         "withAccent": {
           "type": "Boolean",
@@ -26,6 +22,15 @@
             "placeholder_false": "No",
             "placeholder_true": "Yes",
             "default_value": true
+          }
+        },
+        "color": {
+          "type": "Select",
+          "config": {
+            "label": "Color",
+            "placeholder": "",
+            "options": ["none", "gray", "dark"],
+            "default_value": "none"
           }
         }
       },
@@ -41,11 +46,7 @@
       "primary": {
         "image": {
           "type": "Image",
-          "config": {
-            "constraint": {},
-            "thumbnails": [],
-            "label": "Image"
-          }
+          "config": { "constraint": {}, "thumbnails": [], "label": "Image" }
         },
         "withAccent": {
           "type": "Boolean",

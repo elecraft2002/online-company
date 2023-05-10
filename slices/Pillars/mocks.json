@@ -13,6 +13,11 @@
 						}
 					}
 				]
+			},
+			"color": {
+				"__TYPE__": "FieldContent",
+				"value": "none",
+				"type": "Select"
 			}
 		},
 		"items": [
@@ -87,7 +92,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"url": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMzc0NjN8MHwxfHNlYXJjaHw0fHxmcnVpdHxlbnwwfHx8fDE2ODMxMDQyNjk&ixlib=rb-4.0.3&q=85",
 							"origin": {
 								"id": "ezSFnAFi9hY",
@@ -105,6 +109,9 @@
 									"y": 0
 								}
 							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					],

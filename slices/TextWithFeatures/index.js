@@ -4,10 +4,15 @@ import * as prismicH from "@prismicio/helpers";
 
 import { Bounded } from "../../components/Bounded";
 import { Heading } from "../../components/Heading";
+import { getColorVariation } from "../../pages/_app";
 
 const TextWithFeatures = ({ slice }) => {
   return (
-    <Bounded collapsible={false} as="section" className="bg-lightSlate">
+    <Bounded
+      collapsible={false}
+      as="section"
+      className={getColorVariation(slice)}
+    >
       <div className="grid grid-cols-1 items-end gap-10 md:grid-cols-2 md:gap-10 lg:gap-28">
         <div className="grid grid-cols-1 gap-8">
           {prismicH.isFilled.image(slice.primary.icon) && (

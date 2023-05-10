@@ -1,5 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
+import { getColorVariation } from "../../pages/_app";
 
 /**
  * @typedef {import("@prismicio/client").Content.VideoSlice} VideoSlice
@@ -12,7 +13,7 @@ const Video = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="realative h-screen  bg-slate-100"
+      className={"realative h-screen " + getColorVariation(slice)}
     >
       {/* <div className="fixed h-screen  w-screen overflow-hidden">
         <div className="absolute top-0 h-screen w-screen">

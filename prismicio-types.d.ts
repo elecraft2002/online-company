@@ -190,6 +190,17 @@ interface GallerySliceDefaultPrimary {
    *
    */
   text: prismicT.RichTextField;
+  /**
+   * Color field in *Gallery → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: gallery.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Item in Gallery → Items
@@ -245,6 +256,17 @@ interface GallerySliceCarouselPrimary {
    *
    */
   text: prismicT.RichTextField;
+  /**
+   * Color field in *Gallery → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: gallery.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Item in Gallery → Items
@@ -300,6 +322,17 @@ interface GallerySliceInstagramPrimary {
    *
    */
   text: prismicT.RichTextField;
+  /**
+   * Color field in *Gallery → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: gallery.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Item in Gallery → Items
@@ -385,6 +418,17 @@ interface HeroSliceDefaultPrimary {
    *
    */
   image: prismicT.ImageField<never>;
+  /**
+   * Color field in *Hero → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: hero.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Default variation for Hero Slice
@@ -444,6 +488,17 @@ interface HeroSliceWithButtonPrimary {
    *
    */
   image: prismicT.ImageField<never>;
+  /**
+   * Color field in *Hero → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: hero.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * With Button variation for Hero Slice
@@ -498,6 +553,17 @@ interface ImageSliceWhitePrimary {
    *
    */
   withAccent: prismicT.BooleanField;
+  /**
+   * Color field in *Image → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: image.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * White variation for Image Slice
@@ -581,6 +647,17 @@ interface PillarsSliceDefaultPrimary {
    *
    */
   text: prismicT.RichTextField;
+  /**
+   * Color field in *Pillars → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: pillars.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Item in Pillars → Items
@@ -673,6 +750,17 @@ interface TextWithFeaturesSliceDefaultPrimary {
    *
    */
   text: prismicT.RichTextField;
+  /**
+   * Color field in *TextWithFeatures → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: text_with_features.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Item in TextWithFeatures → Items
@@ -745,6 +833,17 @@ interface TextWithImageSliceDefaultPrimary {
    *
    */
   image: prismicT.ImageField<never>;
+  /**
+   * Color field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: text_with_image.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Default variation for TextWithImage Slice
@@ -784,6 +883,17 @@ interface TextWithImageSliceTextWithVideoPrimary {
    *
    */
   video: prismicT.LinkToMediaField;
+  /**
+   * Color field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: text_with_image.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Text - with video variation for TextWithImage Slice
@@ -832,6 +942,17 @@ interface VideoSliceDefaultPrimary {
    *
    */
   video: prismicT.LinkToMediaField;
+  /**
+   * Color field in *Video → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: video.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
 }
 /**
  * Default variation for Video Slice

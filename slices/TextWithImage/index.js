@@ -4,11 +4,12 @@ import * as prismicH from "@prismicio/helpers";
 
 import { Bounded } from "../../components/Bounded";
 import { Heading } from "../../components/Heading";
+import { getColorVariation } from "../../pages/_app";
 
 const TextWithImage = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-transparent">
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-16 lg:gap-28">
+    <Bounded as="section" className={getColorVariation(slice)}>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-16 ">
         <div className="relative max-w-xs md:col-span-5 md:max-w-none">
           <div className="absolute -left-6 -top-6 w-2/3">
             <div className="aspect-h-1 aspect-w-1 bg-lightSlate" />

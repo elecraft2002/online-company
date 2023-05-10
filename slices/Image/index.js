@@ -3,16 +3,14 @@ import * as prismicH from "@prismicio/helpers";
 import clsx from "clsx";
 
 import { Bounded } from "../../components/Bounded";
+import { getColorVariation } from "../../pages/_app";
 
 const Image = ({ slice }) => {
   console.log(slice.variation);
   return (
     <Bounded
       as="section"
-      className={clsx(
-        slice.variation === "lightSlate" && "bg-" + slice.variation,
-        slice.variation === "white" && "bg-lightSlate"
-      )}
+      className={  getColorVariation(slice)}
     >
       <div className="relative">
         {slice.primary.withAccent && (

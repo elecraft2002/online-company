@@ -1,5 +1,6 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicLink, PrismicRichText } from "@prismicio/react";
+import { getColorVariation } from "../../pages/_app";
 
 /**
  * @typedef {import("@prismicio/client").Content.PillarsSlice} PillarsSlice
@@ -10,7 +11,7 @@ const Pillars = ({ slice }) => {
   console.log(slice);
   return (
     <section
-      className="bg-transparent px-6 py-20  md:py-32"
+      className={" px-6 py-20  md:py-32" + getColorVariation(slice)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
