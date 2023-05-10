@@ -8,7 +8,6 @@ import { getColorVariation } from "../../pages/_app";
  * @param {PillarsProps}
  */
 const Pillars = ({ slice }) => {
-  console.log(slice);
   return (
     <section
       className={" px-6 py-20  md:py-32" + getColorVariation(slice)}

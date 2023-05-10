@@ -15,7 +15,6 @@ const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
  */
 
 export const getColorVariation = (slice) => {
-  console.log(slice.primary.color);
   if (slice.primary.color === "none") return " bg-transparent";
   if (slice.primary.color === "gray") return " bg-lightSlate";
   if (slice.primary.color === "dark") return " bg-gray-800 text-white";

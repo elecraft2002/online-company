@@ -8,7 +8,6 @@ import { getColorVariation } from "../../pages/_app";
  * @param {VideoProps}
  */
 const Video = ({ slice }) => {
-  console.log(slice.primary.video.url);
   return (
     <section
       data-slice-type={slice.slice_type}

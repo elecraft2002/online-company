@@ -36,7 +36,6 @@ const Carousel = ({ slice }) => {
         autoplay={{ delay: 5000 }}
       >
         {slice.items.map((item, i) => {
-          console.log();
           return (
             <SwiperSlide key={i}>
               <li className="m-2">

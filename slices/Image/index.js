@@ -6,7 +6,6 @@ import { Bounded } from "../../components/Bounded";
 import { getColorVariation } from "../../pages/_app";
 
 const Image = ({ slice }) => {
-  console.log(slice.variation);
   return (
     <Bounded
       as="section"

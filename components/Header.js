@@ -160,11 +160,9 @@ const StyledNavRow = styled.nav`
   position: absolute;
 `;
 export const Header = ({ navigation, settings }) => {
-  console.log(navigation);
   const [hovered, setHoverState] = useState(null);
   const [isOpenned, setNavState] = useState(false);
   useEffect(() => {
-    console.log(isOpenned ? "hidded" : null);
     const body = document.querySelector("body");
     body.style.overflowY = isOpenned ? "hidded" : null;
   }, [isOpenned]);
