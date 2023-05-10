@@ -22,14 +22,15 @@ export default function App() {
   const ref = useRef(null);
   const [perfSucks, degrade] = useState(false);
   const { width, height } = useWindowSize();
-  const scrollY = useScroll();
+  const scroll = useScroll();
+  const scrollY = scroll > 1 ? 1 : scroll;
   const { pen, flower, camera, laptop } = useSpring({
     pen: [0, scrollY, 0],
     flower: [0, scrollY * 2, 0],
     laptop: [0, scrollY / 2, 0],
     camera: [0, scrollY, 0],
   });
-  if (scrollY > 1.5) return null;
+
   return (
     <Canvas
       // shadows
@@ -45,7 +46,7 @@ export default function App() {
       <color attach="background" args={["#f0f0f0"]} />
       <group position={[0, 0, 0]} rotation={[0, -0.75, 0]}>
         {/* <Scene /> */}
-       <Suspense fallback={null}>
+        <Suspense fallback={null}>
           <animated.group position={pen}>
             <Pen scale={1} position={[width / 600, 0, 0]} />
           </animated.group>
@@ -85,8 +86,8 @@ export default function App() {
               bias={0.001}
             />
           </AccumulativeShadows>
-       </Suspense>
-        </group>
+        </Suspense>
+      </group>
       <Env perfSucks={perfSucks} />
     </Canvas>
   );
