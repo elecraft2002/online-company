@@ -1,8 +1,22 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { animated } from "@react-spring/three";
-
+import { TextureLoader } from "three";
+import { useLoader } from "@react-three/fiber";
+import * as THREE from "three";
+import display from "../../assets/imgs/display.jpg"
 export default function Laptop(props) {
+  const colorMap = useLoader(
+    TextureLoader,
+    display.src
+  );
+  useEffect(() => {
+    const imgRatio = colorMap.image.width / colorMap.image.height;
+    const planeRatio = 16/9;
+    colorMap.wrapS = THREE.RepeatWrapping; // THREE.ClampToEdgeWrapping;
+    colorMap.repeat.x = planeRatio / imgRatio;
+    colorMap.offset.x = -0.5 * (planeRatio / imgRatio - 1);
+  }, [props.image]);
   const { nodes, materials } = useGLTF("/Laptop.glb");
   return (
     <animated.group {...props} dispose={null}>
@@ -30,7 +44,11 @@ export default function Laptop(props) {
                   geometry={nodes.Object_11.geometry}
                   material={materials.display}
                 >
-                  <meshStandardMaterial color="blue" />
+                  {/* <meshStandardMaterial color="blue" /> */}
+                  <meshStandardMaterial
+                    map={colorMap}
+                    side={THREE.DoubleSide}
+                  />
                 </mesh>
                 <mesh
                   name="Object_12"

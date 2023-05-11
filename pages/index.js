@@ -21,7 +21,7 @@ const Index = ({ page, navigation, settings }) => {
         <Scene />
         <h1 className="text-6xl font-bold tablet:text-8xl desktop:text-[10vw]">
           <span className="px-8 absolute top-24 z-10 tracking-widest before:absolute before:-z-10 before:h-full before:w-4/5 before:translate-x-8 before:translate-y-8 before:bg-lightSlate before:content-['']">
-            PES
+            VOJTÍK
           </span>
           <span className="px-8 absolute bottom-24 right-0 z-10 tracking-widest before:absolute before:-z-10 before:h-full before:w-4/5 before:translate-x-8 before:translate-y-8 before:bg-lightSlate before:content-['']">
             DESIGN
