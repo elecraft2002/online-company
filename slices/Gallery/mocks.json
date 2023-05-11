@@ -227,5 +227,92 @@
 				]
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "horizontal",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat irure et excepteur ut veniam exercitation do do consequat ullamco cupidatat officia."
+						}
+					}
+				]
+			},
+			"color": {
+				"__TYPE__": "FieldContent",
+				"value": "none",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"__TYPE__": "ImageContent",
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+								"width": 5243,
+								"height": 3495
+							},
+							"url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+							"width": 5243,
+							"height": 3495,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"thumbnails": {
+								"Small": {
+									"origin": {
+										"id": "Small",
+										"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+										"width": 6000,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?rect=0%2C2%2C6000%2C3996&w=500&h=333",
+									"width": 500,
+									"height": 333,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 2
+										},
+										"background": "transparent"
+									}
+								}
+							}
+						}
+					],
+					[
+						"text",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Veniam officia magna nostrud proident esse et amet anim sit nisi do est aliqua consequat. Culpa officia tempor cillum enim."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
 	}
 ]

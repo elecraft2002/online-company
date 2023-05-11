@@ -20,6 +20,7 @@ const GalleryComponent = ({ slice }) => {
           {slice.items.map((item, i) => {
             return (
               <a
+              key={i}
                 className="gallery-item m-2 "
                 data-src={item.image.url}
                 href={item.image.url}

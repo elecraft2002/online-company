@@ -34,6 +34,7 @@ export default function App() {
   return (
     <Canvas
       // shadows
+  
       ref={ref}
       dpr={[1, perfSucks ? 1.5 : 2]}
       // eventSource={document.getElementById('root')}

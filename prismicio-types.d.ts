@@ -374,13 +374,80 @@ export type GallerySliceInstagram = prismicT.SharedSliceVariation<
   Simplify<GallerySliceInstagramItem>
 >;
 /**
+ * Primary content in Gallery → Primary
+ *
+ */
+interface GallerySliceHorizontalPrimary {
+  /**
+   * Text field in *Gallery → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+  /**
+   * Color field in *Gallery → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: gallery.primary.color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  color: prismicT.SelectField<"none" | "gray" | "dark", "filled">;
+}
+/**
+ * Item in Gallery → Items
+ *
+ */
+export interface GallerySliceHorizontalItem {
+  /**
+   * Image field in *Gallery → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismicT.ImageField<"Small">;
+  /**
+   * Text field in *Gallery → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismicT.RichTextField;
+}
+/**
+ * Horizontal variation for Gallery Slice
+ *
+ * - **API ID**: `horizontal`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GallerySliceHorizontal = prismicT.SharedSliceVariation<
+  "horizontal",
+  Simplify<GallerySliceHorizontalPrimary>,
+  Simplify<GallerySliceHorizontalItem>
+>;
+/**
  * Slice variation for *Gallery*
  *
  */
 type GallerySliceVariation =
   | GallerySliceDefault
   | GallerySliceCarousel
-  | GallerySliceInstagram;
+  | GallerySliceInstagram
+  | GallerySliceHorizontal;
 /**
  * Gallery Shared Slice
  *
@@ -1047,6 +1114,9 @@ declare module "@prismicio/client" {
       GallerySliceInstagramPrimary,
       GallerySliceInstagramItem,
       GallerySliceInstagram,
+      GallerySliceHorizontalPrimary,
+      GallerySliceHorizontalItem,
+      GallerySliceHorizontal,
       GallerySliceVariation,
       GallerySlice,
       HeroSliceDefaultPrimary,
