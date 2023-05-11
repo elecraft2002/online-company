@@ -8,6 +8,7 @@ import "../styles/globals.css";
 import React from "react";
 // import AnimatedCursor from "react-animated-cursor"
 import dynamic from "next/dynamic";
+import { Heading } from "../components/Heading";
 /* 
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
@@ -22,6 +23,16 @@ export const getColorVariation = (slice) => {
 };
 
 const richTextComponents = {
+  heading1: ({ children }) => (
+    <Heading as="h2" size="6xl" className="mb-8 last:mb-0">
+      {children}
+    </Heading>
+  ),
+  heading2: ({ children }) => (
+    <Heading as="h3" size="2xl" className="mb-2 last:mb-0">
+      {children}
+    </Heading>
+  ),
   paragraph: ({ children }) => <p className="mb-7 last:mb-0">{children}</p>,
   oList: ({ children }) => (
     <ol className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ol>

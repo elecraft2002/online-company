@@ -7,7 +7,9 @@ import { getColorVariation } from "../../pages/_app";
  * @typedef {import("@prismicio/react").SliceComponentProps<PillarsSlice>} PillarsProps
  * @param {PillarsProps}
  */
+
 const Pillars = ({ slice }) => {
+  console.log(slice);
   return (
     <section
       className={" px-6 py-20  md:py-32" + getColorVariation(slice)}
@@ -17,19 +19,23 @@ const Pillars = ({ slice }) => {
       <span className="text-center">
         <PrismicRichText field={slice.primary.text} />
       </span>
-      <div className="flex flex-wrap justify-center">
+      <div className="my-6 flex flex-wrap justify-center">
         {slice.items.map((item, i) => {
+          console.log(item);
           return (
-            <div key={i} className="m-2 flex max-w-xl">
-              <PrismicLink field={item.link || ""} className="flex-col">
+            <div key={i} className="m-2 flex max-w-md">
+              <figure>
                 <PrismicNextImage
                   field={item.image}
                   className="aspect-1 w-3/5 rounded-lg object-cover"
                 />
-                <span className="my-5 block">
+                <figcaption className="my-5 block">
                   <PrismicRichText field={item.text} />
-                </span>
-              </PrismicLink>
+                </figcaption>
+                <PrismicLink field={item.link} className="flex-col">
+                  Více
+                </PrismicLink>
+              </figure>
             </div>
           );
         })}
