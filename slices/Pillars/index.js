@@ -25,10 +25,12 @@ const Pillars = ({ slice }) => {
           return (
             <div key={i} className="m-2 flex max-w-md">
               <figure>
-                <PrismicNextImage
-                  field={item.image}
-                  className="aspect-1 w-3/5 rounded-lg object-cover"
-                />
+                <div className="aspect-1 w-3/5 rounded-lg object-cover overflow-hidden">
+                  <PrismicNextImage
+                    field={item.image}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <figcaption className="my-5 block">
                   <PrismicRichText field={item.text} />
                 </figcaption>
