@@ -22,19 +22,18 @@ export default function App() {
   const ref = useRef(null);
   const [perfSucks, degrade] = useState(false);
   const { width, height } = useWindowSize();
-  const scroll = useScroll();
-  const scrollY = scroll > 1 ? 1 : scroll;
+  const scrollY = useScroll();
+  // const scrollY = scroll > 1 ? 1 : scroll;
   const { pen, flower, camera, laptop } = useSpring({
     pen: [0, scrollY, 0],
     flower: [0, scrollY * 2, 0],
     laptop: [0, scrollY / 2, 0],
     camera: [0, scrollY, 0],
   });
-
   return (
     <Canvas
       // shadows
-  
+
       ref={ref}
       dpr={[1, perfSucks ? 1.5 : 2]}
       // eventSource={document.getElementById('root')}
@@ -48,28 +47,32 @@ export default function App() {
       <group position={[0, 0, 0]} rotation={[0, -0.75, 0]}>
         {/* <Scene /> */}
         <Suspense fallback={null}>
-          <animated.group position={pen}>
-            <Pen scale={1} position={[width / 600, 0, 0]} />
-          </animated.group>
-          <animated.group position={flower}>
-            <Flower scale={1.5} position={[-width / 600, 0, 1]} />
-          </animated.group>
-          <animated.group position={camera}>
-            <CameraModel
-              position={[width / 600, 0, -2]}
-              rotation={[0, -Math.PI / 2, 0]}
-              scale={0.8}
-            />
-          </animated.group>
-          <animated.group position={laptop}>
-            <Laptop
-              scale={
-                width / 800 > 2 ? width / 600 : 2
-              } /* rotation={easedRotation}  */
-              position={[0, -0.2, 0]}
-              rotation={[0, -Math.PI / 2, 0]}
-            />
-          </animated.group>
+          {scrollY < 1.1 && (
+            <>
+              <animated.group position={pen}>
+                <Pen scale={1} position={[width / 600, 0, 0]} />
+              </animated.group>
+              <animated.group position={flower}>
+                <Flower scale={1.5} position={[-width / 600, 0, 1]} />
+              </animated.group>
+              <animated.group position={camera}>
+                <CameraModel
+                  position={[width / 600, 0, -2]}
+                  rotation={[0, -Math.PI / 2, 0]}
+                  scale={0.8}
+                />
+              </animated.group>
+              <animated.group position={laptop}>
+                <Laptop
+                  scale={
+                    width / 800 > 2 ? width / 600 : 2
+                  } /* rotation={easedRotation}  */
+                  position={[0, -0.2, 0]}
+                  rotation={[0, -Math.PI / 2, 0]}
+                />
+              </animated.group>
+            </>
+          )}
           <AccumulativeShadows
             frames={100}
             alphaTest={0.85}
